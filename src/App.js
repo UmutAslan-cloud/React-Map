@@ -1,16 +1,14 @@
-
+import React, { Component } from 'react'
 import './App.css';
-import render from './components/item'
+import foreigners from './services/foreigners.json'
 
-
-const sayi = 4;
-
+import PersonContainer from './components/PersonContainer'
 
 function App() {
   return (
     <div className="App">
-     {/* <Header/> deaktivated/commented out */}
-      <render/>
+   
+     <PersonContainer list={foreigners}/>
     </div>
   );
 }
