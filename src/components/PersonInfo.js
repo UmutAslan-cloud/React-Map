@@ -2,10 +2,12 @@ import Children from './Children'
 import Friends from './Friends'
 
 import React, { Component } from 'react'
+import { render, screen } from '@testing-library/react'; 
 export default function PersonDetail(props){
     return (
       <div className="App-person">
         <div id="person-detail-container">
+          <h2 className='header'>Person</h2>
             <img src={props.avatar} className="avatar-person" alt={props.first_name} />
             <div className="person-name">
                 <span>{props.first_name} {props.last_name}</span>
@@ -37,3 +39,14 @@ export default function PersonDetail(props){
       </div>
     )
 }
+
+test ('test Personinfo',()=>{
+  render (<PersonDetail />);
+  const headElement=screen.getByRole('heading');
+  expect(headElement).toBeInTheDocument();
+  expect(headElement).toHaveClass('header')
+  screen.debug()
+  
+}
+
+)

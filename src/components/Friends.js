@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-export default function Children({friends}){
+import { render, screen } from '@testing-library/react'; 
+export default function Friends({friends}){
     return (
         friends.map(friend=>{
             return <div className="friends">
-              
+          
         <div className="friends-detail">
             <img src={friend.avatar} className="avatar-friends" alt={friend.firstName} />
             <span>{friend.firstName}</span>
@@ -23,3 +24,13 @@ export default function Children({friends}){
         })
     )
 }
+
+ test ("test friends",()=>{
+    render (<Friends/>);
+    const headElement=screen.getByRole("heading");
+    expect(headElement).toBeInTheDocument();
+    expect(headElement).toHaveClass('header')
+   
+}
+
+) 
